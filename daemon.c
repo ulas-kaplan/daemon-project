@@ -59,7 +59,7 @@ int daemon_init(void)                       // Implements the daemonization proc
 	if (chdir("/") < 0)                 // Changes the working directory to the root directory.
 		return -1;                  // Returns an error if the directory change fails.
 
-	/* Dosya tanimlayicilarini (file descriptors) kapat */ // Keeps original Turkish comment.
+	/* Dosya tanimlayicilarini (file descriptors) kapat */ 
 	for (i = 0; i < 1024; i++) {        // Loops through all possible file descriptors.
 		if (log_file && i == fileno(log_file)) // Checks if the descriptor belongs to our log file.
 			continue;           // Skips closing the active log file descriptor.
@@ -76,4 +76,4 @@ int daemon_init(void)                       // Implements the daemonization proc
 	}                                   // Ends the if block.
 
 	return 0;                           // Returns zero indicating successful daemonization.
-}                                           // Ends the function body.
+}                                           

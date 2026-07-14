@@ -58,4 +58,4 @@ int main(int argc, char *argv[])            // Defines the main entry point of t
 		fclose(log_file);           // Closes the open log file descriptor.
 
 	return EXIT_SUCCESS;                // Exits the program successfully.
-}                                           // Ends the function body.
+}                                           
