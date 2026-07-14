@@ -14,7 +14,7 @@ int main(int argc, char *argv[])            // Defines the main entry point of t
 {                                           // Begins the function body.
 	int opt;                            // Declares a variable to store parsed options.
 
-	/* -o ve -l argumanlarini ayristir */ // Keeps original Turkish comment.
+	/* -o ve -l argumanlarini ayristir */ 
 	while ((opt = getopt(argc, argv, "o:l:")) != -1) { // Loops through command-line arguments.
 		if (opt == 'o') {           // Checks if the output option was provided.
 			if (strcmp(optarg, "syslog") == 0) { // Checks if the output target is syslog.
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])            // Defines the main entry point of t
 
 	do_log(1, "[INFO] Daemon started.\n"); // Logs a message indicating successful startup.
 
-	/* Ana arka plan dongusu */         // Keeps original Turkish comment.
+	/* Ana arka plan dongusu */         
 	while (daemon_running) {            // Loops continuously while the running flag is active.
 		if (daemon_reload) {        // Checks if a reload signal was received.
 			do_log(1, "[INFO] Reloading config - SIGHUP received.\n"); // Logs the reload event.
