@@ -1,0 +1,17 @@
+make clean
+make
+
+./mydaemon -o syslog -l 2
+
+tail -f /var/log/syslog | grep mydaemon
+
+killall mydaemon
+
+./mydaemon -o /tmp/mentor.log -l 2
+
+tail -f /tmp/mentor.log
+
+killall -HUP mydaemon
+
+killall mydaemon
+
