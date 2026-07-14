@@ -2,24 +2,31 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -O2
 
+# directories
+SRC_DIR = src
+
 # output target
 TARGET = mydaemon
 LOGFILE = /tmp/daemon.log
 
+# source and object files
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/daemon.c $(SRC_DIR)/log.c
+OBJS = $(SRCS:.c=.o)
+
 # build rules
 all: $(TARGET)
 
-# we now have 3 object files (.o) that need to be linked together
-$(TARGET): main.o daemon.o log.o
-	$(CC) $(CFLAGS) -o $(TARGET) main.o daemon.o log.o
+# linking
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-# the % symbol is a pattern rule that automatically compiles each .c to a .o
-%.o: %.c
+# compiling (pattern rule for files inside src/)
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# clean rule (removes all .o files, the executable, and the log file)
+# clean rule
 clean:
-	rm -f *.o $(TARGET) $(LOGFILE)
+	rm -f $(SRC_DIR)/*.o $(TARGET) $(LOGFILE)
 
 # TEST COMMANDS
 run: all

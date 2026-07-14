@@ -1,0 +1,9 @@
+# Object files
+*.o
+src/*.o
+
+# Executable
+mydaemon
+
+# Log files
+*.log
